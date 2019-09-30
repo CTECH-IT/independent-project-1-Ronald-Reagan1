@@ -1,1 +1,13 @@
 /* Put your CSS here */
+body {
+  background: rgb(158, 158, 150);
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+}
+.page-title {
+  background: black;
+  color: rgb(158, 158, 158);
+  font-size: 37px;
+  text-align: center;
+}
