@@ -12,13 +12,12 @@ body {
 .logo-text {
   background: green;
   color: blue;
-  font-family: lakeshore;
   font-size: 37px;
   text-align: center;
   text-transform: uppercase;
 }
 .page-title {
-  background: teal;
+  background: rgb(204,35,22);
   color: black;
   font-size: 37px;
   text-align: center;
@@ -40,6 +39,19 @@ body {
   justify-content: center;
   align-items: center;
 }
+.detail-image-frame {
+  position: relative;
+  text-align: center;
+}
+.detail-image-title {
+  color: black;
+  font-size: 40px;
+  position: absolute;
+  bottom: -45px;
+  left: 12px;
+  text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;
+  text-decoration: none;
+}
 
 .thumbnail-image {
   display: block;
@@ -55,7 +67,9 @@ body {
   width: auto;
   height: auto;
 }
-
+.thumbnail-item:hover {
+  transform: scale(1.6);
+}
 .thumbnail-list {
   display: flex;
   flex: 0 1 auto;
@@ -74,6 +88,7 @@ body {
   font-size: 18px;
   margin: 0;
   padding: 4px 10px;
+  text-decoration: none;
 }
 
 .hidden-detail .thumbnail-list {
