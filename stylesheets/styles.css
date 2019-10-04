@@ -95,3 +95,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.detailImage{
+  width: 20px;
+  height: 20px;
+}

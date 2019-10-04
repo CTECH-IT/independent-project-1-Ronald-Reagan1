@@ -7,6 +7,58 @@ const HIDDEN_DETAIL_CLASS = 'hidden-detail';
 const TINY_EFFECT_CLASS = 'is-tiny';
 const ESC_KEY_CODE = 27;
 
+// set the detail image and title
+function setDetails(imageUrl, titleText) {
+  'use strict';
+  let detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
+  detailImage.setAttribute('src', imageUrl);
+
+  let detailTitle = document.querySelector(DETAIL_TITLE_SELECTOR);
+  detailTitle.textContent = titleText;
+}
+
+function imageFromThumb(thumbnail) {
+  'use strict';
+  //let a = thumbnail.getAttribute('data-image-url');
+  //console.log("diu:" + a);
+  return thumbnail.getAttribute('data-image-url');
+}
+
+function titleFromThumb(thumbnail) {
+  'use strict';
+  //let a = thumbnail.getAttribute('data-image-title');
+  //console.log("dit:" + a);
+  return thumbnail.getAttribute('data-image-title');
+}
+
+// get the detail image and title from a thumbnail
+function setDetailsFromThumb(thumbnail) {
+  'use strict';
+  setDetails(imageFromThumb(thumbnail), titleFromThumb(thumbnail));
+}
+
+function addThumbClickHandler(thumb) {
+  'use strict';
+  thumb.addEventListener('click', function(event) {
+    event.preventDefault(); // stop the browser following the href link
+    setDetailsFromThumb(thumb);
+    showDetails(); // show the big detail image
+  });
+}
+
+function getThumbnailsArray() {
+  'use strict';
+  let thumbnails = document.querySelectorAll(THUMBNAIL_LINK_SELECTOR);
+  let thumbnailArray = [].slice.call(thumbnails); // convert the NodeList to an array
+  return thumbnailArray;
+}
+
+// add the CSS class to <body> to hide the detail image
+function hideDetails() {
+  'use strict';
+  document.body.classList.add(HIDDEN_DETAIL_CLASS);
+}
+// add the CSS class to <body> to show the detail image
 function showDetails() {
   'use strict';
   let frame = document.querySelector(DETAIL_FRAME_SELECTOR);
@@ -16,6 +68,7 @@ function showDetails() {
     frame.classList.remove(TINY_EFFECT_CLASS)
   }, 50);
 }
+
 function addKeyPressHandler() {
   'use strict';
   document.body.addEventListener('keyup', function(event) {
@@ -26,3 +79,14 @@ function addKeyPressHandler() {
     }
   });
 }
+
+function initializeEvents() {
+  'use strict';
+  let thumbnails = getThumbnailsArray();
+  thumbnails.forEach(addThumbClickHandler);
+  addKeyPressHandler();
+}
+
+// run all the functions to link the thumbnails to the callback
+// that will update the main detail image with the thumbnail's image and title
+initializeEvents();
