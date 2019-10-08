@@ -3,6 +3,8 @@ html, body {
   height: 100%;
 }
 
+font-family: 'Mansalva', cursive;
+
 body {
   background: grey;
   display: flex;
